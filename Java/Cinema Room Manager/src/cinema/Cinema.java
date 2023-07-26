@@ -7,11 +7,15 @@ public class Cinema {
         // Write your code here
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("-----STAGE ONE-----");
+        System.out.println("Enter the number of rows:");
+        int rows = scanner.nextInt();
+        System.out.println("Enter the number of seats in each row:");
+        int seats = scanner.nextInt();
+
         System.out.println("Cinema:");
-        for (int i = 0; i <= 7; i++) {
+        for (int i = 0; i <= rows; i++) {
             if (i == 0) {
-                for (int j = 0; j <= 8; j++) {
+                for (int j = 0; j <= seats; j++) {
                     if (j == 0) {
                         System.out.print("\s\s");
                     } else {
@@ -21,36 +25,45 @@ public class Cinema {
             } else {
                 System.out.println();
                 System.out.print(i + "\s");
-                for (int j = 0; j < 8; j++) {
+                for (int j = 1; j <= seats; j++) {
                     System.out.print("S\s");
                 }
             }
         }
 
-        System.out.println("\n-----STAGE ONE-----");
-        System.out.println("Enter the number of rows:");
-        int rows = scanner.nextInt();
-        System.out.println("Enter the number of seats in each row");
-        int seats = scanner.nextInt();
+        System.out.println("\nEnter a row number:");
+        int row = scanner.nextInt();
+        System.out.println("Enter a seat number in that row");
+        int seat = scanner.nextInt();
 
-        int totalSeats = rows * seats;
-        int profit = 0, frontHalf = 0, backHalf = 0;
+        int ticketPrice = 0;
+        ticketPrice = ((rows * seats) <= 60) ? 10 : ((row <= Math.floor(rows / 2)) ? 10 : 8);
 
-        if (rows % 2 != 0) {
-            frontHalf = ((int) Math.floor(rows / 2.00)) * seats;
-            backHalf = ((int) Math.ceil(rows / 2.00)) * seats;
-        } else {
-            frontHalf = totalSeats / 2;
-            backHalf = totalSeats / 2;
+        System.out.println("Ticket price: $" + ticketPrice);
+
+        System.out.println("Cinema:");
+        for (int i = 0; i <= rows; i++) {
+            if (i == 0) {
+                for (int j = 0; j <= seats; j++) {
+                    if (j == 0) {
+                        System.out.print("\s\s");
+                    } else {
+                        System.out.print(j + "\s");
+                    }
+                }
+            } else {
+                System.out.println();
+                System.out.print(i + "\s");
+                for (int j = 1; j <= seats; j++) {
+                    if (i == row && j == seat) {
+                        System.out.print("B\s");
+                    } else {
+                        System.out.print("S\s");
+                    }
+                }
+            }
         }
 
-        if (totalSeats <= 60) {
-            profit = totalSeats * 10;
-        } else {
-            profit = (frontHalf * 10) + (backHalf * 8);
-        }
-
-        System.out.println("Total income:\n$" + profit);
         scanner.close();
     }
 }
