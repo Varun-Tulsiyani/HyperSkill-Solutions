@@ -3,7 +3,7 @@ package cinema;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class Cinema {
+public class Stage5 {
     public static void main(String[] args) {
         // Write your code here
         final DecimalFormat decimalFormat = new DecimalFormat("0.00");
