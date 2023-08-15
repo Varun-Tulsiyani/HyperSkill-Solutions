@@ -3,7 +3,7 @@ package cinema;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class Stage5 {
+public class CinemaRoomManager {
     public static void main(String[] args) {
         // Write your code here
         final DecimalFormat decimalFormat = new DecimalFormat("0.00");
@@ -18,7 +18,8 @@ public class Stage5 {
         int seats = scanner.nextInt();
         int totalSeats = rows * seats;
 
-        int totalIncome = (totalSeats <= 60) ? totalSeats * 10 : (int) (Math.floor(rows / 2.0) * seats * 10) + (int) (Math.ceil(rows / 2.0) * seats * 8);
+        int totalIncome = (totalSeats <= 60) ? totalSeats * 10
+                : (int) (Math.floor(rows / 2.0) * seats * 10) + (int) (Math.ceil(rows / 2.0) * seats * 8);
 
         String[][] seatMap = new String[rows + 1][seats + 1];
         for (int i = 0; i <= rows; i++) {
@@ -70,7 +71,8 @@ public class Stage5 {
                                     if (i == row && j == seat) {
                                         if (seatMap[i][j].equals("S ")) {
                                             seatMap[i][j] = "B ";
-                                            int ticketPrice = (totalSeats <= 60) ? 10 : ((row <= Math.floor(rows / 2.0)) ? 10 : 8);
+                                            int ticketPrice = (totalSeats <= 60) ? 10
+                                                    : ((row <= Math.floor(rows / 2.0)) ? 10 : 8);
                                             System.out.println("Ticket price: $" + ticketPrice);
                                             tickets++;
                                             percentage = (double) tickets / totalSeats * 100;
